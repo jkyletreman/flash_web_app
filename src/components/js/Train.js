@@ -21,7 +21,12 @@ const grid = {
 }
 
 export default class Train extends React.Component {
-
+  constructor(props){
+    super(props);
+    this.state = {
+      opacity: '0.0'
+    }
+  }
   render() {
     return (
       <div style={grid.container}>

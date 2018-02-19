@@ -12,6 +12,8 @@ export default class Rectangle extends React.Component {
         borderRadius: '15%',
         height: '200px',
         width: '360px',
+        textAlign: 'center',
+        margin: '0 auto'
       }
     }
   }
