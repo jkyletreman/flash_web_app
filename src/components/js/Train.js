@@ -23,21 +23,31 @@ export default class Train extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      display: 'none',
-      // opacity: '0.8'
+      clickFX: {
+        display: 'none'
+      },
+      hoverFX: {
+        opacity: '0.8'
+      }
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
   handleClick() {
-    this.setState({display: 'block'})
+    const clickFX = {...this.state.clickFX}
+    clickFX.display = 'block'
+    this.setState({clickFX: clickFX})
   }
   handleMouseEnter() {
-    // this.setState({opacity: '1'})
+    const mouseEnterFX = {...this.state.hoverFX}
+    mouseEnterFX.opacity = '1'
+    this.setState({hoverFX: mouseEnterFX})
   }
   handleMouseLeave(){
-    // this.setState({opacity: '0.8'})
+    const mouseLeaveFX = {...this.state.hoverFX}
+    mouseLeaveFX.opacity = '0.8'
+    this.setState({hoverFX: mouseLeaveFX})
   }
   render() {
     return (
@@ -49,7 +59,7 @@ export default class Train extends React.Component {
           onMouseLeave={this.handleMouseLeave}
           onClick={this.handleClick}
           // State
-          // fx={this.state}
+          fx={this.state.hoverFX}
           // Props & Style
           combineStyleObjects={this.props.combineStyleObjects}
           grid={grid.question}
@@ -58,7 +68,13 @@ export default class Train extends React.Component {
         />
         {/* Answer */}
         <Rectangle
-          fx={this.state}
+          //Events
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+          onClick={this.handleClick}
+          // State
+          fx={this.props.combineStyleObjects(this.state.clickFX, this.state.hoverFX)}
+          // Props & Style
           combineStyleObjects={this.props.combineStyleObjects}
           grid={grid.answer}
           style={this.props.colors.blue}
