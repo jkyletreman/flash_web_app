@@ -2,6 +2,8 @@ import React from 'react'
 import FontIcon from 'material-ui/FontIcon'
 import Rectangle from './Rectangle'
 import Icon from './Icon'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 const grid = {
   back: {
@@ -46,23 +48,32 @@ export default class Test extends React.Component {
     super(props);
   }
   render() {
-    return (<React.Fragment>
+    return (<MuiThemeProvider>
+      <React.Fragment>
       {/* /* currently broken */ }
-      {/* <div style={grid.IconBack}>
+      <div style={grid.IconBack}>
         <Icon text={'fast_rewind'} colors={this.props.colors} />
-      </div> */}
-      <div style={grid.container}>
-        <Rectangle style={this.props.colors.white} grid={grid.question} text={'Question?'}/>
-        <Rectangle style={this.props.colors.blue} grid={grid.answer1} text={'Choice #1'}/>
-        <Rectangle style={this.props.colors.green} grid={grid.answer2} text={'Choice #2'}/>
       </div>
-    </React.Fragment>)
+      <div style={grid.container}>
+        <Rectangle
+          combineStyleObjects={this.props.combineStyleObjects}
+          style={this.props.colors.white}
+          grid={grid.question}
+          text={'Question?'}
+        />
+        <Rectangle
+          combineStyleObjects={this.props.combineStyleObjects}
+          style={this.props.colors.blue}
+          grid={grid.answer1}
+          text={'Choice #1'}
+        />
+        <Rectangle
+          combineStyleObjects={this.props.combineStyleObjects}
+          style={this.props.colors.green}
+          grid={grid.answer2}
+          text={'Choice #2'}/>
+      </div>
+    </React.Fragment>
+  </MuiThemeProvider>)
   }
-}
-
-// Old Code Snippets
-// Old divs now Rectangle Component
-{/* <div class='question' style={Object.assign(spacing.question, this.props.shape.rectangle, this.props.colors.white)}><p>Question?</p></div> */
-} {/* <div class='answer' style={Object.assign(spacing.answer1, this.props.shape.rectangle, this.props.colors.green)}><p>Choice</p></div> */
-} {/* <div class='answer' style={Object.assign(spacing.answer2, this.props.shape.rectangle, this.props.colors.blue)}><p>Choice</p></div> */
 }
