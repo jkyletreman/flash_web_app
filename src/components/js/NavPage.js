@@ -48,10 +48,10 @@ export default class NavPage extends React.Component {
       // better solution: have the behavior at the component level
       opacity: '0.8'
     }
-    this.handleMouseOver = this.handleMouseOver.bind(this)
+    this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
-  handleMouseOver() {
+  handleMouseEnter() {
     this.setState({opacity: '1'})
   }
   handleMouseLeave(){
@@ -70,8 +70,8 @@ export default class NavPage extends React.Component {
       <MuiThemeProvider>
           <div style={grid.container}>
             <CircleSmall
-              effects={this.state}
-              onMouseEnter={this.handleMouseOver}
+              fx={this.state}
+              onMouseEnter={this.handleMouseEnter}
               onMouseLeave={this.handleMouseLeave}
               combineStyleObjects={this.props.combineStyleObjects}
               color={this.props.colors.teal}
@@ -79,8 +79,8 @@ export default class NavPage extends React.Component {
               text={'Create'}
             />
             <CircleLarge
-              effects={this.state}
-              onMouseEnter={this.handleMouseOver}
+              fx={this.state}
+              onMouseEnter={this.handleMouseEnter}
               onMouseLeave={this.handleMouseLeave}
               combineStyleObjects={this.props.combineStyleObjects}
               color={this.props.colors.blue}
@@ -88,8 +88,8 @@ export default class NavPage extends React.Component {
               text={'Train'}
             />
             <CircleLarge
-              effects={this.state}
-              onMouseEnter={this.handleMouseOver}
+              fx={this.state}
+              onMouseEnter={this.handleMouseEnter}
               onMouseLeave={this.handleMouseLeave}
               combineStyleObjects={this.props.combineStyleObjects}
               color={this.props.colors.pink}
@@ -97,8 +97,8 @@ export default class NavPage extends React.Component {
               text={'Test'}
             />
             <CircleSmall
-              effects={this.state}
-              onMouseEnter={this.handleMouseOver}
+              fx={this.state}
+              onMouseEnter={this.handleMouseEnter}
               onMouseLeave={this.handleMouseLeave}
               combineStyleObjects={this.props.combineStyleObjects}
               color={this.props.colors.green}

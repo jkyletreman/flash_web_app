@@ -12,12 +12,26 @@ export default class Rectangle extends React.Component {
         borderRadius: '15%',
         height: '200px',
         width: '360px',
+        textAlign: 'center',
+        margin: '0 auto'
       }
     }
   }
   render() {
     return (
-      <div style={Object.assign(this.state.rectangle, this.props.style, this.props.grid)}>
+      <div
+        // Events
+        onMouseEnter={this.props.onMouseEnter}
+        onMouseLeave={this.props.onMouseLeave}
+        onClick={this.props.onClick}
+        // Styling
+        style={this.props.combineStyleObjects(
+        this.state.rectangle,
+        this.props.style,
+        this.props.grid,
+        this.props.fx
+      )}>
+
         <p>{this.props.text}</p>
       </div>
     )
