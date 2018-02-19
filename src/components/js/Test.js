@@ -6,8 +6,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 const grid = {
   back: {
     gridRow: '1',
-    gridColumn: '2',
-    maxWidth: '65%'
+    gridColumn: '1',
+    maxWidth: '70%'
   },
   container: {
     display: 'grid',
@@ -17,14 +17,16 @@ const grid = {
   question: {
     gridRow: '2',
     gridColumn: '1',
+    marginTop: '4%'
   },
   answer1: {
     gridRow: '1',
-    gridColumn: '2',
+    gridColumn: '1',
   },
   answer2: {
     gridRow: '3',
-    gridColumn: '2',
+    gridColumn: '1',
+    marginTop: '4%'
   },
   IconLeft: {
     gridRow: '4',
