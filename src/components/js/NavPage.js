@@ -60,7 +60,7 @@ export default class NavPage extends React.Component {
   }
 /* each Circle Component requires
   # onMouseEnter && onMouseLeave event
-  # effects obj
+  # effects obj (UI interactions)
   # color in for of this.props.color.****
   # grid position
   # Text

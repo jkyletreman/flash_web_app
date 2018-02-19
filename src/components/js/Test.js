@@ -47,9 +47,10 @@ export default class Test extends React.Component {
   }
   render() {
     return (<React.Fragment>
-      <div style={grid.IconBack}>
+      {/* /* currently broken */ }
+      {/* <div style={grid.IconBack}>
         <Icon text={'fast_rewind'} colors={this.props.colors} />
-      </div>
+      </div> */}
       <div style={grid.container}>
         <Rectangle style={this.props.colors.white} grid={grid.question} text={'Question?'}/>
         <Rectangle style={this.props.colors.blue} grid={grid.answer1} text={'Choice #1'}/>

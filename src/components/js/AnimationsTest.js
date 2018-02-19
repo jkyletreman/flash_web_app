@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import CircleSmall from '../js/CircleSmall'
 // import CircleLarge from '../js/CircleLarge'
 // import Icon from '../js/Icon'
-import '../css/Animations.css'
+// import '../css/Animations.css'
 /* each Circle Component requires
   # onMouseEnter event
   # color in for of this.props.color.****
