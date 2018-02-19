@@ -24,29 +24,33 @@ export default class Train extends React.Component {
     super(props);
     this.state = {
       display: 'none',
-      opacity: '0.8'
+      // opacity: '0.8'
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
   handleClick() {
-    console.log('working')
     this.setState({display: 'block'})
   }
   handleMouseEnter() {
-    this.setState({opacity: '1'})
+    // this.setState({opacity: '1'})
   }
   handleMouseLeave(){
-    this.setState({opacity: '0.8'})
+    // this.setState({opacity: '0.8'})
   }
   render() {
     return (
       <div style={grid.container}>
         {/* Question */}
         <Rectangle
+          //Events
           onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
           onClick={this.handleClick}
+          // State
+          // fx={this.state}
+          // Props & Style
           combineStyleObjects={this.props.combineStyleObjects}
           grid={grid.question}
           style={this.props.colors.white}
