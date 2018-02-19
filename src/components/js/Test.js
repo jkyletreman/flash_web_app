@@ -1,13 +1,13 @@
 import React from 'react'
-import FontIcon from 'material-ui/FontIcon'
 import Rectangle from './Rectangle'
-import Icon from './Icon'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 const grid = {
   back: {
     gridRow: '1',
-    gridColumn: '2',
-    maxWidth: '65%'
+    gridColumn: '1',
+    maxWidth: '70%'
   },
   container: {
     display: 'grid',
@@ -17,14 +17,16 @@ const grid = {
   question: {
     gridRow: '2',
     gridColumn: '1',
+    marginTop: '4%'
   },
   answer1: {
     gridRow: '1',
-    gridColumn: '2',
+    gridColumn: '1',
   },
   answer2: {
     gridRow: '3',
-    gridColumn: '2',
+    gridColumn: '1',
+    marginTop: '4%'
   },
   IconLeft: {
     gridRow: '4',
@@ -46,23 +48,28 @@ export default class Test extends React.Component {
     super(props);
   }
   render() {
-    return (<React.Fragment>
-      {/* /* currently broken */ }
-      {/* <div style={grid.IconBack}>
-        <Icon text={'fast_rewind'} colors={this.props.colors} />
-      </div> */}
+    return (<MuiThemeProvider>
+      <React.Fragment>
       <div style={grid.container}>
-        <Rectangle style={this.props.colors.white} grid={grid.question} text={'Question?'}/>
-        <Rectangle style={this.props.colors.blue} grid={grid.answer1} text={'Choice #1'}/>
-        <Rectangle style={this.props.colors.green} grid={grid.answer2} text={'Choice #2'}/>
+        <Rectangle
+          combineStyleObjects={this.props.combineStyleObjects}
+          style={this.props.colors.white}
+          grid={grid.question}
+          text={'Question?'}
+        />
+        <Rectangle
+          combineStyleObjects={this.props.combineStyleObjects}
+          style={this.props.colors.blue}
+          grid={grid.answer1}
+          text={'Choice #1'}
+        />
+        <Rectangle
+          combineStyleObjects={this.props.combineStyleObjects}
+          style={this.props.colors.green}
+          grid={grid.answer2}
+          text={'Choice #2'}/>
       </div>
-    </React.Fragment>)
+    </React.Fragment>
+  </MuiThemeProvider>)
   }
-}
-
-// Old Code Snippets
-// Old divs now Rectangle Component
-{/* <div class='question' style={Object.assign(spacing.question, this.props.shape.rectangle, this.props.colors.white)}><p>Question?</p></div> */
-} {/* <div class='answer' style={Object.assign(spacing.answer1, this.props.shape.rectangle, this.props.colors.green)}><p>Choice</p></div> */
-} {/* <div class='answer' style={Object.assign(spacing.answer2, this.props.shape.rectangle, this.props.colors.blue)}><p>Choice</p></div> */
 }
