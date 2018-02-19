@@ -52,7 +52,6 @@ export default class NavPage extends React.Component {
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
   handleMouseOver() {
-    console.log('working')
     this.setState({opacity: '1'})
   }
   handleMouseLeave(){

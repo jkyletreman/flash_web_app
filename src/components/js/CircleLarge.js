@@ -24,7 +24,17 @@ export default class CircleSmall extends React.Component {
     render() {
       return (
         <div style={this.props.grid}>
-          <div style={this.props.combineStyleObjects(this.state.circleLarge, this.props.color, this.props.grid)}>
+          <div
+            // UI Events
+            onMouseEnter={this.props.onMouseEnter}
+            onMouseLeave={this.props.onMouseLeave}
+            // combined styling
+            style={this.props.combineStyleObjects(
+              this.state.circleLarge,
+              this.props.color,
+              this.props.grid,
+              this.props.effects
+            )}>
             <p style={{paddingTop: '20%'}}>{this.props.text}</p>
           </div>
         </div>
