@@ -31,7 +31,3 @@ export default class Train extends React.Component {
     )
   }
 }
-
-// before Rectangle component
-{/* <div style={Object.assign(this.props.colors.white, this.props.shape.rectangle)} className='question'><p>Question?</p></div> */}
-{/* <div style={Object.assign(this.props.colors.blue, this.props.shape.rectangle)} className='answer'><p>Answer!</p></div> */}

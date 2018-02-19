@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // import Start from './components/js/Start'
-import NavPage from './components/js/NavPage'
-// import Train from './components/js/Train'
+// import NavPage from './components/js/NavPage'
+import Train from './components/js/Train'
 // import Test from './components/js/Test'
 // import Create from './components/js/Create'
 // import AnimationTest from './components/js/AnimationsTest'
@@ -73,10 +73,10 @@ class App extends Component {
       // <MuiThemeProvider>
         <div style={spacing} className="App">
           {/* <Start colors={colors}/> */}
-        <NavPage colors={colors} combineStyleObjects={this.combineStyleObjects}/>
+        {/* <NavPage colors={colors} combineStyleObjects={this.combineStyleObjects}/> */}
         {/* <AnimationTest combineStyleObjects={this.combineStyleObjects} colors={colors} /> */}
           {/* <Create colors={colors} /> */}
-          {/* <Train colors={colors} /> */}
+          <Train colors={colors} />
           {/* <Test colors={colors} /> */}
         </div>
       // </MuiThemeProvider>
