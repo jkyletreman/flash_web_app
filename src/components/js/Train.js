@@ -26,11 +26,16 @@ export default class Train extends React.Component {
     this.state = {
       opacity: '0.0'
     }
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+
   }
   render() {
     return (
       <div style={grid.container}>
         <Rectangle
+          onClick={this.handleClick}
           combineStyleObjects={this.props.combineStyleObjects}
           grid={grid.question}
           style={this.props.colors.white}

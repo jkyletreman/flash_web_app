@@ -20,6 +20,7 @@ export default class Rectangle extends React.Component {
   render() {
     return (
       <div
+        onClick={this.props.onClick}
         style={this.props.combineStyleObjects(
         this.state.rectangle,
         this.props.style,
