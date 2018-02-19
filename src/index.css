@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya|Brawler|Cinzel|Oregano|Oxygen|Risque');
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  background-color: rgb(193, 154, 232);
+  font-family: 'Oxygen';
+}
+
+.App {
+  font-size: 40px;
 }
