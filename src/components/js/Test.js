@@ -1,7 +1,5 @@
 import React from 'react'
-import FontIcon from 'material-ui/FontIcon'
 import Rectangle from './Rectangle'
-import Icon from './Icon'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
@@ -50,10 +48,6 @@ export default class Test extends React.Component {
   render() {
     return (<MuiThemeProvider>
       <React.Fragment>
-      {/* /* currently broken */ }
-      <div style={grid.IconBack}>
-        <Icon text={'fast_rewind'} colors={this.props.colors} />
-      </div>
       <div style={grid.container}>
         <Rectangle
           combineStyleObjects={this.props.combineStyleObjects}
