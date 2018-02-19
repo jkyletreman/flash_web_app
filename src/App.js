@@ -76,7 +76,7 @@ class App extends Component {
         {/* <NavPage colors={colors} combineStyleObjects={this.combineStyleObjects}/> */}
         {/* <AnimationTest combineStyleObjects={this.combineStyleObjects} colors={colors} /> */}
           {/* <Create colors={colors} /> */}
-          <Train colors={colors} />
+          <Train colors={colors} combineStyleObjects={this.combineStyleObjects}/>
           {/* <Test colors={colors} /> */}
         </div>
       // </MuiThemeProvider>

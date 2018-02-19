@@ -17,7 +17,13 @@ export default class Rectangle extends React.Component {
   }
   render() {
     return (
-      <div style={Object.assign(this.state.rectangle, this.props.style, this.props.grid)}>
+      <div
+        style={this.props.combineStyleObjects(
+        this.state.rectangle,
+        this.props.style,
+        this.props.grid
+      )}>
+
         <p>{this.props.text}</p>
       </div>
     )
