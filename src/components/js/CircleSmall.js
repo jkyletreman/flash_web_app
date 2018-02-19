@@ -32,7 +32,7 @@ export default class CircleSmall extends React.Component {
               this.state.circleSmall,
               this.props.color,
               this.props.grid,
-              this.props.effects
+              this.props.fx
             )}>
 
             <p style={{paddingTop: '10%'}}>{this.props.text}</p>

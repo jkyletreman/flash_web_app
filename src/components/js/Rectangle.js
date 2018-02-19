@@ -20,11 +20,16 @@ export default class Rectangle extends React.Component {
   render() {
     return (
       <div
+        // Events
+        onMouseEnter={this.props.onMouseEnter}
+        onMouseLeave={this.props.onMouseLeave}
         onClick={this.props.onClick}
+        // Styling
         style={this.props.combineStyleObjects(
         this.state.rectangle,
         this.props.style,
-        this.props.grid
+        this.props.grid,
+        this.props.fx
       )}>
 
         <p>{this.props.text}</p>
