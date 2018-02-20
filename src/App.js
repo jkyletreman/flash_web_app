@@ -34,6 +34,16 @@ const colors = {
     border: '5px solid black',
     color: 'black',
   },
+  right: {
+    backgroundColor: 'rgb(70, 145, 91)',
+    border: '5px solid white',
+    color: 'white'
+  },
+  wrong: {
+    backgroundColor: 'rgba(230, 102, 80, 0.82)',
+    border: '5px solid black',
+    color: 'black',
+  },
   iconGreyStyle: {
     color: 'rgb(105, 105, 105)',
     fontSize: '36px'

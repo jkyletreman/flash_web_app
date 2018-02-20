@@ -1,6 +1,7 @@
 import React from 'react'
 const style = {
   margin: '0 auto',
+  marginTop: '10%',
   display: 'grid',
   maxWidth: '70%',
   paddingBottom: '5%'
