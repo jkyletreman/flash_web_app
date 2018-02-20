@@ -4,15 +4,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 const grid = {
-  back: {
-    gridRow: '1',
-    gridColumn: '1',
-    maxWidth: '70%'
-  },
   container: {
     display: 'grid',
-    maxWidth: '60%',
-    paddingLeft: '15%'
+    margin: '0 auto',
+    maxWidth: '70%',
   },
   question: {
     gridRow: '2',
