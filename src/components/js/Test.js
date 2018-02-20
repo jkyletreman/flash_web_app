@@ -22,19 +22,6 @@ const grid = {
     gridRow: '3',
     gridColumn: '1',
     marginTop: '4%'
-  },
-  IconLeft: {
-    gridRow: '4',
-    gridColumn: '1'
-  },
-  IconRight: {
-    gridRow: '4',
-    gridColumn: '2'
-  },
-  IconBack: {
-    display: 'flex',
-    margin: '0 auto',
-    maxWidth: '70%'
   }
 }
 
