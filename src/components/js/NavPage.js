@@ -41,22 +41,9 @@ const grid = {
 
 
 export default class NavPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // give each component its own opacity
-      // better solution: have the behavior at the component level
-      opacity: '0.8'
-    }
-    this.handleMouseEnter = this.handleMouseEnter.bind(this)
-    this.handleMouseLeave = this.handleMouseLeave.bind(this)
-  }
-  handleMouseEnter() {
-    this.setState({opacity: '1'})
-  }
-  handleMouseLeave(){
-    this.setState({opacity: '0.8'})
-  }
+  // constructor(props) {
+  //   super(props);
+  //   }
 /* each Circle Component requires
   # onMouseEnter && onMouseLeave event
   # effects obj (UI interactions)
@@ -68,38 +55,27 @@ export default class NavPage extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
+        <React.Fragment>
           <div style={grid.container}>
             <CircleSmall
-              fx={this.state}
-              onMouseEnter={this.handleMouseEnter}
-              onMouseLeave={this.handleMouseLeave}
               combineStyleObjects={this.props.combineStyleObjects}
               color={this.props.colors.teal}
               grid={grid.top}
               text={'Create'}
             />
             <CircleLarge
-              fx={this.state}
-              onMouseEnter={this.handleMouseEnter}
-              onMouseLeave={this.handleMouseLeave}
               combineStyleObjects={this.props.combineStyleObjects}
               color={this.props.colors.blue}
               grid={grid.left}
               text={'Train'}
             />
             <CircleLarge
-              fx={this.state}
-              onMouseEnter={this.handleMouseEnter}
-              onMouseLeave={this.handleMouseLeave}
               combineStyleObjects={this.props.combineStyleObjects}
               color={this.props.colors.pink}
               grid={grid.right}
               text={'Test'}
             />
             <CircleSmall
-              fx={this.state}
-              onMouseEnter={this.handleMouseEnter}
-              onMouseLeave={this.handleMouseLeave}
               combineStyleObjects={this.props.combineStyleObjects}
               color={this.props.colors.green}
               grid={grid.bottom}
@@ -110,6 +86,7 @@ export default class NavPage extends React.Component {
           <Icon colors={this.props.colors} text={'school'} grid={grid.IconLeft} />
           <Icon colors={this.props.colors} text={'person_pin'} grid={grid.IconRight} />
         </div>
+        </React.Fragment>
       </MuiThemeProvider>
     )
   }
