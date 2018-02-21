@@ -14,21 +14,42 @@ export default class Rectangle extends React.Component {
         width: '360px',
         textAlign: 'center',
         margin: '0 auto'
+      },
+      hoverFX: {
+        opacity: '0.8',
+        border: this.props.style.border
       }
     }
+    this.handleMouseEnter = this.handleMouseEnter.bind(this)
+    this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
+  handleMouseEnter() {
+    const mouseEnterFX = {...this.state.hoverFX}
+    mouseEnterFX.opacity = '1'
+    mouseEnterFX.border = '5px solid red'
+    this.setState({hoverFX: mouseEnterFX})
+  }
+  handleMouseLeave() {
+    const mouseLeaveFX = {...this.state.hoverFX}
+    mouseLeaveFX.opacity = '0.8'
+    mouseLeaveFX.border = this.props.style.border
+    this.setState({hoverFX: mouseLeaveFX})
+  }
+
   render() {
     return (
       <div
         // Events
-        onMouseEnter={this.props.onMouseEnter}
-        onMouseLeave={this.props.onMouseLeave}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
         onClick={this.props.onClick}
-        // Styling
+        // Styling & effects
         style={this.props.combineStyleObjects(
         this.state.rectangle,
         this.props.style,
         this.props.grid,
+        // effects
+        this.state.hoverFX,
         this.props.fx
       )}>
 
@@ -37,9 +58,3 @@ export default class Rectangle extends React.Component {
     )
   }
 }
-
-// Possible solution
-
-// have the opacity down at Rectangle, but use conditional to test whether
-// is hover is occuring at the parent component,
-// then render the opacity at the Recatangle
