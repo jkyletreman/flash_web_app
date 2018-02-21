@@ -16,21 +16,23 @@ export default class Rectangle extends React.Component {
         margin: '0 auto'
       },
       hoverFX: {
-        opacity: '0.8'
+        opacity: '0.8',
+        border: '5px solid black'
       }
     }
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
   handleMouseEnter() {
-    console.log('working')
     const mouseEnterFX = {...this.state.hoverFX}
     mouseEnterFX.opacity = '1'
+    mouseEnterFX.border = '5px solid red'
     this.setState({hoverFX: mouseEnterFX})
   }
   handleMouseLeave() {
     const mouseLeaveFX = {...this.state.hoverFX}
     mouseLeaveFX.opacity = '0.8'
+    mouseLeaveFX.border = '5px solid black'
     this.setState({hoverFX: mouseLeaveFX})
   }
 

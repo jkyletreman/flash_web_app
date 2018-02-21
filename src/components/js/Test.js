@@ -47,8 +47,6 @@ export default class Test extends React.Component {
       <div style={grid.container}>
         <Rectangle
           onClick={this.handleClick}
-          // State
-          fx={this.state.clickFX}
           // Style & Props
           combineStyleObjects={this.props.combineStyleObjects}
           style={this.props.colors.white}
@@ -57,6 +55,8 @@ export default class Test extends React.Component {
         />
         <Rectangle
           onClick={this.handleClick}
+          // State
+          fx={this.state.clickFX}
           // Style & Props
           combineStyleObjects={this.props.combineStyleObjects}
           style={this.props.colors.blue}
@@ -65,6 +65,8 @@ export default class Test extends React.Component {
         />
         <Rectangle
           onClick={this.handleClick}
+          // State
+          fx={this.state.clickFX}
           // Style & Props
           combineStyleObjects={this.props.combineStyleObjects}
           style={this.props.colors.green}
