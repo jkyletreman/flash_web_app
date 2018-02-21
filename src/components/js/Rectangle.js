@@ -17,7 +17,7 @@ export default class Rectangle extends React.Component {
       },
       hoverFX: {
         opacity: '0.8',
-        border: '5px solid black'
+        border: this.props.style.border
       }
     }
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
@@ -32,7 +32,7 @@ export default class Rectangle extends React.Component {
   handleMouseLeave() {
     const mouseLeaveFX = {...this.state.hoverFX}
     mouseLeaveFX.opacity = '0.8'
-    mouseLeaveFX.border = '5px solid black'
+    mouseLeaveFX.border = this.props.style.border
     this.setState({hoverFX: mouseLeaveFX})
   }
 
