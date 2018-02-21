@@ -10,13 +10,13 @@ const grid = {
     maxWidth: '70%',
   },
   question: {
+    gridRow: '1',
+    gridColumn: '1',
+  },
+  answer1: {
     gridRow: '2',
     gridColumn: '1',
     marginTop: '4%'
-  },
-  answer1: {
-    gridRow: '1',
-    gridColumn: '1',
   },
   answer2: {
     gridRow: '3',
