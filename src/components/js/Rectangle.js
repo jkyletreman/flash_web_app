@@ -37,3 +37,9 @@ export default class Rectangle extends React.Component {
     )
   }
 }
+
+// Possible solution
+
+// have the opacity down at Rectangle, but use conditional to test whether
+// is hover is occuring at the parent component,
+// then render the opacity at the Recatangle
