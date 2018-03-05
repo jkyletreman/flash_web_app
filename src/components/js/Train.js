@@ -1,5 +1,7 @@
 import React from 'react'
 import Rectangle from './Rectangle'
+import NavBar from './NavBar'
+
 
 // positioning to pass each rendered component
 const grid = {
@@ -80,6 +82,7 @@ export default class Train extends React.Component {
           style={this.props.colors.blue}
           text={'Answer!'}
         />
+        <NavBar colors={this.props.colors} combineStyleObjects={this.props.combineStyleObjects}/>
       </div>
     )
   }

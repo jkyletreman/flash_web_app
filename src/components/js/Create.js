@@ -66,7 +66,7 @@ export default class Create extends React.Component {
 
           <input style={grid.button} type='submit' value='Add a Flash' />
 
-          <NavBar colors={this.props.colors} grid={this.props.grid} combineStyleObjects={this.props.combineStyleObjects}/>
+          <NavBar colors={this.props.colors} combineStyleObjects={this.props.combineStyleObjects}/>
       </React.Fragment>)
   }
 }

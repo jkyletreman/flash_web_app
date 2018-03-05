@@ -1,6 +1,8 @@
 import React from 'react'
 import Rectangle from './Rectangle'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import NavBar from './NavBar'
+
 
 
 const grid = {
@@ -73,6 +75,7 @@ export default class Test extends React.Component {
           grid={grid.answer2}
           text={'Choice #2'}/>
       </div>
+      <NavBar colors={this.props.colors} combineStyleObjects={this.props.combineStyleObjects}/>
     </React.Fragment>
   </MuiThemeProvider>)
   }
