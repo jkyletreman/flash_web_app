@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link, Redirect, Switch} from 'react-router-dom'
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import Start from './components/js/Start'
-import NavPage from './components/js/NavPage'
-import Train from './components/js/Train'
-import Test from './components/js/Test'
-import Create from './components/js/Create'
+// import Start from './components/js/Start'
+// import NavPage from './components/js/NavPage'
+// import Train from './components/js/Train'
+// import Test from './components/js/Test'
+// import Create from './components/js/Create'
+import About from './components/js/About'
 // import AnimationTest from './components/js/AnimationsTest'
 
 const colors = {
@@ -94,7 +95,7 @@ class App extends Component {
   */
   render() {
     return (<React.Fragment>
-      <Router>
+      {/* <Router>
         <div style={spacing} className="App">
           {!this.state.isRendering ?
           (<Start colors={colors}/>) : (<Switch>
@@ -105,7 +106,8 @@ class App extends Component {
           </Switch>
         )}
         </div>
-      </Router>
+      </Router> */}
+      <About />
     </React.Fragment>)
   }
 }
