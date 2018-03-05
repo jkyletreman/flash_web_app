@@ -67,7 +67,6 @@ export default class NavPage extends React.Component {
               <CircleSmall
                 combineStyleObjects={this.props.combineStyleObjects}
                 color={this.props.colors.teal}
-                // grid={grid.top}
                 text={'Create'}
                 onClick={this.handleClick}
               />
@@ -76,7 +75,6 @@ export default class NavPage extends React.Component {
               <CircleLarge
                 combineStyleObjects={this.props.combineStyleObjects}
                 color={this.props.colors.blue}
-                // grid={grid.left}
                 text={'Train'}
                 onClick={this.handleClick}
               />
@@ -85,7 +83,6 @@ export default class NavPage extends React.Component {
               <CircleLarge
                 combineStyleObjects={this.props.combineStyleObjects}
                 color={this.props.colors.pink}
-                grid={grid.right}
                 text={'Test'}
                 onClick={this.handleClick}
               />
@@ -94,7 +91,6 @@ export default class NavPage extends React.Component {
               <CircleSmall
                 combineStyleObjects={this.props.combineStyleObjects}
                 color={this.props.colors.green}
-                grid={grid.bottom}
                 text={'Results'}
                 onClick={this.handleClick}
               />
