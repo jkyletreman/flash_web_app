@@ -74,7 +74,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    setTimeout(function() {(console.log('we did it'))}, 5000);
+    setTimeout(() => this.setState({isRendering: true}), 3000);
   }
   // combines multiple 1 level objects into a single object for inline style
   combineStyleObjects(...params) {
@@ -98,13 +98,16 @@ class App extends Component {
     return (<React.Fragment>
       <Router>
         <div style={spacing} className="App">
-          {/* <Start colors={colors}/> */}
+          {!this.state.isRendering ? (
+
+          <Start colors={colors}/> ) : (
           <Switch>
             <Route exact path='/' render={() => <NavPage getTextValue={this.getTextValue} colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
             <Route path='/create' render={() => <Create colors={colors}/>}/>
             <Route path='/train' render={() => <Train colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
             <Route path='/test' render={() => <Test colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
           </Switch>
+        )}
         </div>
       </Router>
     </React.Fragment>)
