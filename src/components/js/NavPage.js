@@ -83,10 +83,6 @@ export default class NavPage extends React.Component {
               />
             </Link>
           </div>
-        {/* <div style={this.props.combineStyleObjects(grid.IconContainer, {paddingTop: '20%'})}>
-          <Icon colors={this.props.colors} text={'school'} grid={grid.IconLeft} />
-          <Icon colors={this.props.colors} text={'person_pin'} grid={grid.IconRight} />
-        </div> */}
       </React.Fragment>
     </MuiThemeProvider>
     )
