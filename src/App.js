@@ -65,12 +65,16 @@ class App extends Component {
     this.getTextValue = this.getTextValue.bind(this)
 
     this.state = {
-      isRendering: false
+      isRendering: false // target for timer function
     }
   }
   getTextValue(e) {
     this.setState({isRendering: e.target.innerText})
     console.log('hello')
+  }
+
+  componentDidMount() {
+    setTimeout(function() {(console.log('we did it'))}, 5000);
   }
   // combines multiple 1 level objects into a single object for inline style
   combineStyleObjects(...params) {
@@ -90,12 +94,13 @@ class App extends Component {
   # full colors obj -L2 with matching borders + Icon styling
   */
   render() {
+    // conditional rendering start vs switch
     return (<React.Fragment>
       <Router>
         <div style={spacing} className="App">
           {/* <Start colors={colors}/> */}
           <Switch>
-            <Route exact="exact" path='/' render={() => <NavPage getTextValue={this.getTextValue} colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
+            <Route exact path='/' render={() => <NavPage getTextValue={this.getTextValue} colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
             <Route path='/create' render={() => <Create colors={colors}/>}/>
             <Route path='/train' render={() => <Train colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
             <Route path='/test' render={() => <Test colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>

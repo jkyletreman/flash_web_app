@@ -60,28 +60,28 @@ export default class NavPage extends React.Component {
   */
   render() {
     return (
+      <MuiThemeProvider>
         <React.Fragment>
-          <MuiThemeProvider>
           <div style={grid.container}>
-            <Link to='/create'>
+            <Link to='/create' style={this.props.combineStyleObjects({textDecoration: 'none' }, grid.top)}>
               <CircleSmall
                 combineStyleObjects={this.props.combineStyleObjects}
                 color={this.props.colors.teal}
-                grid={grid.top}
+                // grid={grid.top}
                 text={'Create'}
                 onClick={this.handleClick}
               />
            </Link>
-           <Link to='/train'>
+           <Link to='/train' style={this.props.combineStyleObjects({textDecoration: 'none' }, grid.left)} >
               <CircleLarge
                 combineStyleObjects={this.props.combineStyleObjects}
                 color={this.props.colors.blue}
-                grid={grid.left}
+                // grid={grid.left}
                 text={'Train'}
                 onClick={this.handleClick}
               />
             </Link>
-            <Link to='/test'>
+            <Link to='/test' style={this.props.combineStyleObjects({textDecoration: 'none' }, grid.right)}>
               <CircleLarge
                 combineStyleObjects={this.props.combineStyleObjects}
                 color={this.props.colors.pink}
@@ -90,7 +90,7 @@ export default class NavPage extends React.Component {
                 onClick={this.handleClick}
               />
             </Link>
-            <Link to='/results'>
+            <Link to='/results' style={this.props.combineStyleObjects({textDecoration: 'none' }, grid.bottom)}>
               <CircleSmall
                 combineStyleObjects={this.props.combineStyleObjects}
                 color={this.props.colors.green}
@@ -104,8 +104,8 @@ export default class NavPage extends React.Component {
           <Icon colors={this.props.colors} text={'school'} grid={grid.IconLeft} />
           <Icon colors={this.props.colors} text={'person_pin'} grid={grid.IconRight} />
         </div>
-        </MuiThemeProvider>
       </React.Fragment>
+    </MuiThemeProvider>
     )
   }
 }
