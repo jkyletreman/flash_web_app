@@ -93,14 +93,11 @@ class App extends Component {
   # full colors obj -L2 with matching borders + Icon styling
   */
   render() {
-    // conditional rendering start vs switch
     return (<React.Fragment>
       <Router>
         <div style={spacing} className="App">
-          {!this.state.isRendering ? (
-
-          <Start colors={colors}/> ) : (
-          <Switch>
+          {!this.state.isRendering ?
+          (<Start colors={colors}/>) : (<Switch>
             <Route exact path='/' render={() => <NavPage getTextValue={this.getTextValue} colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
             <Route path='/create' render={() => <Create colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
             <Route path='/train' render={() => <Train colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
