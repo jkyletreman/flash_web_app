@@ -7,7 +7,8 @@ const style = {
   textAlign: 'center',
   maxWidth: '40%',
   border: '5px solid black',
-  listStylePosition: 'center'
+  listStylePosition: 'center',
+  color: 'white',
 }
 
 function About() {
