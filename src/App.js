@@ -74,7 +74,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    setTimeout(function() {(console.log('we did it'))}, 5000);
+    setTimeout(() => this.setState({isRendering: true}), 5000);
   }
   // combines multiple 1 level objects into a single object for inline style
   combineStyleObjects(...params) {
