@@ -11,7 +11,7 @@ export default class NavPage extends React.Component {
     return (<div style={this.props.grid}>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet"></link>
       <FontIcon className='material-icons'
-        style={this.props.colors.iconGreyStyle}>
+        style={this.props.colors.iconGreyStyle} onClick={this.props.onClick}>
         {this.props.text}
       </FontIcon>
     </div>

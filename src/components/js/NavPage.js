@@ -25,19 +25,6 @@ const grid = {
   bottom: {
     gridRow: '3',
     gridColumn: '2',
-  },
-  IconContainer: {
-    display: 'grid'
-  },
-  IconLeft: {
-    gridRow: '1',
-    gridColumn: '1',
-    margin: '0 auto'
-  },
-  IconRight: {
-    gridRow: '1',
-    gridColumn: '2',
-    margin: '0 auto'
   }
 }
 
@@ -96,10 +83,10 @@ export default class NavPage extends React.Component {
               />
             </Link>
           </div>
-        <div style={this.props.combineStyleObjects(grid.IconContainer, {paddingTop: '20%'})}>
+        {/* <div style={this.props.combineStyleObjects(grid.IconContainer, {paddingTop: '20%'})}>
           <Icon colors={this.props.colors} text={'school'} grid={grid.IconLeft} />
           <Icon colors={this.props.colors} text={'person_pin'} grid={grid.IconRight} />
-        </div>
+        </div> */}
       </React.Fragment>
     </MuiThemeProvider>
     )

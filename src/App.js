@@ -65,12 +65,11 @@ class App extends Component {
     this.getTextValue = this.getTextValue.bind(this)
 
     this.state = {
-      isRendering: false // target for timer function
+      isRendering: true // target for timer function
     }
   }
   getTextValue(e) {
     this.setState({isRendering: e.target.innerText})
-    console.log('hello')
   }
 
   componentDidMount() {
@@ -103,7 +102,7 @@ class App extends Component {
           <Start colors={colors}/> ) : (
           <Switch>
             <Route exact path='/' render={() => <NavPage getTextValue={this.getTextValue} colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
-            <Route path='/create' render={() => <Create colors={colors}/>}/>
+            <Route path='/create' render={() => <Create colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
             <Route path='/train' render={() => <Train colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
             <Route path='/test' render={() => <Test colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
           </Switch>
