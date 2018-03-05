@@ -3,6 +3,7 @@
 body {
   background-color: rgb(193, 154, 232);
   font-family: 'Oxygen';
+  margin: '0 auto';
 }
 
 .App {

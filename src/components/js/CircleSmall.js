@@ -27,7 +27,6 @@ export default class CircleSmall extends React.Component {
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
   handleMouseEnter() {
-    console.log('working')
     const mouseEnterFX = {...this.state.hoverFX}
     mouseEnterFX.opacity = '1'
     mouseEnterFX.border = '5px solid rgb(226, 197, 97)'

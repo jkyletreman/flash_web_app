@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CircleSmall from './CircleSmall'
 import CircleLarge from './CircleLarge'
@@ -7,6 +8,7 @@ import Icon from './Icon'
 const grid = {
   container: {
     display: 'grid',
+    margin: '0 auto'
   },
   top: {
     gridRow: '1',
@@ -39,11 +41,15 @@ const grid = {
   }
 }
 
-
 export default class NavPage extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   }
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    const text = this.props.getTextValue(e)
+  }
 /* each Circle Component requires
   # onMouseEnter && onMouseLeave event
   # effects obj (UI interactions)
@@ -54,40 +60,52 @@ export default class NavPage extends React.Component {
   */
   render() {
     return (
-      <MuiThemeProvider>
         <React.Fragment>
+          <MuiThemeProvider>
           <div style={grid.container}>
-            <CircleSmall
-              combineStyleObjects={this.props.combineStyleObjects}
-              color={this.props.colors.teal}
-              grid={grid.top}
-              text={'Create'}
-            />
-            <CircleLarge
-              combineStyleObjects={this.props.combineStyleObjects}
-              color={this.props.colors.blue}
-              grid={grid.left}
-              text={'Train'}
-            />
-            <CircleLarge
-              combineStyleObjects={this.props.combineStyleObjects}
-              color={this.props.colors.pink}
-              grid={grid.right}
-              text={'Test'}
-            />
-            <CircleSmall
-              combineStyleObjects={this.props.combineStyleObjects}
-              color={this.props.colors.green}
-              grid={grid.bottom}
-              text={'Results'}
-            />
+            <Link to='/create'>
+              <CircleSmall
+                combineStyleObjects={this.props.combineStyleObjects}
+                color={this.props.colors.teal}
+                grid={grid.top}
+                text={'Create'}
+                onClick={this.handleClick}
+              />
+           </Link>
+           <Link to='/train'>
+              <CircleLarge
+                combineStyleObjects={this.props.combineStyleObjects}
+                color={this.props.colors.blue}
+                grid={grid.left}
+                text={'Train'}
+                onClick={this.handleClick}
+              />
+            </Link>
+            <Link to='/test'>
+              <CircleLarge
+                combineStyleObjects={this.props.combineStyleObjects}
+                color={this.props.colors.pink}
+                grid={grid.right}
+                text={'Test'}
+                onClick={this.handleClick}
+              />
+            </Link>
+            <Link to='/results'>
+              <CircleSmall
+                combineStyleObjects={this.props.combineStyleObjects}
+                color={this.props.colors.green}
+                grid={grid.bottom}
+                text={'Results'}
+                onClick={this.handleClick}
+              />
+            </Link>
           </div>
         <div style={this.props.combineStyleObjects(grid.IconContainer, {paddingTop: '20%'})}>
           <Icon colors={this.props.colors} text={'school'} grid={grid.IconLeft} />
           <Icon colors={this.props.colors} text={'person_pin'} grid={grid.IconRight} />
         </div>
-        </React.Fragment>
-      </MuiThemeProvider>
+        </MuiThemeProvider>
+      </React.Fragment>
     )
   }
 }
