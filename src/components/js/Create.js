@@ -1,4 +1,5 @@
 import React from 'react'
+import NavBar from './NavBar'
 const style = {
   margin: '0 auto',
   marginTop: '10%',
@@ -64,6 +65,8 @@ export default class Create extends React.Component {
           </form>
 
           <input style={grid.button} type='submit' value='Add a Flash' />
+
+          <NavBar colors={this.props.colors} grid={this.props.grid} combineStyleObjects={this.props.combineStyleObjects}/>
       </React.Fragment>)
   }
 }
