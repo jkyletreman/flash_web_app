@@ -70,7 +70,6 @@ class App extends Component {
   }
   getTextValue(e) {
     this.setState({isRendering: e.target.innerText})
-    console.log('hello')
   }
 
   componentDidMount() {

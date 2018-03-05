@@ -31,7 +31,6 @@ export default class NavBar extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
   handleClick() {
-    console.log('yep')
     window.history.back();
   }
   render() {
