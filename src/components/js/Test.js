@@ -3,8 +3,6 @@ import Rectangle from './Rectangle'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import NavBar from './NavBar'
 
-
-
 const grid = {
   container: {
     display: 'grid',
