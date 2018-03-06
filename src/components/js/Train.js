@@ -28,12 +28,26 @@ export default class Train extends React.Component {
       },
       hoverFX: {
         opacity: '0.8'
-      }
+      },
+      questions: null
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
+
+  // pulling cards from DB
+  async fetchCards() {
+    const response = await fetch('http://localhost:8000/cards');
+    const cards = await response.json();
+    this.setState({questions: cards})
+  }
+  // initiating fetch on load
+  componentDidMount() {
+    this.fetchCards();
+  }
+
+  // event handlers (Ui/Ux)
   handleClick() {
     const clickFX = {...this.state.clickFX}
     clickFX.display = 'block'
