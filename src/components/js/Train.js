@@ -35,19 +35,18 @@ export default class Train extends React.Component {
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
+
   // pulling cards from DB
   async fetchCards() {
     const response = await fetch('http://localhost:8000/cards');
     const cards = await response.json();
-    console.log(cards[1].answer)
-    return cards; // array of objects
+    this.setState({questions: cards})
   }
   // initiating fetch on load
   componentDidMount() {
-    const data = this.fetchCards();
-    console.log(data)
-    this.setState({questions: data[0]})
+    this.fetchCards();
   }
+
   // event handlers (Ui/Ux)
   handleClick() {
     const clickFX = {...this.state.clickFX}
