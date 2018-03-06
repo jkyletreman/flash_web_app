@@ -1,8 +1,6 @@
 import React from 'react'
 import Rectangle from './Rectangle'
 import NavBar from './NavBar'
-
-
 // positioning to pass each rendered component
 const grid = {
   container: {

@@ -63,16 +63,11 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.combineStyleObjects = this.combineStyleObjects.bind(this)
-    this.getTextValue = this.getTextValue.bind(this)
-
     this.state = {
-      isRendering: true // target for timer function
+      isRendering: true // target for setTimeout function ** SET TO FALSE FOR TRANSITION
     }
   }
-  getTextValue(e) {
-    this.setState({isRendering: e.target.innerText})
-  }
-
+  // handles transition of Start to NavPage
   componentDidMount() {
     setTimeout(() => this.setState({isRendering: true}), 3000);
   }
@@ -98,17 +93,18 @@ class App extends Component {
       <Router>
         <div>
         <div style={spacing} className="App">
-          {!this.state.isRendering ?
-          (<Start colors={colors}/>) : (<Switch>
-            <Route exact path='/' render={() => <NavPage getTextValue={this.getTextValue} colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
-            <Route path='/create' render={() => <Create colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
-            <Route path='/train' render={() => <Train colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
-            <Route path='/test' render={() => <Test colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
-            <Route path='/about' component={About} />
-          </Switch>
-        )}
+          {!this.state.isRendering
+            ? (<Start colors={colors}/>)
+            : (<Switch>
+                <Route exact path='/' render={() => <NavPage colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
+                <Route path='/create' render={() => <Create colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
+                <Route path='/train' render={() => <Train colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
+                <Route path='/test' render={() => <Test colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
+                <Route path='/about' component={About} />
+              </Switch>)
+            }
+          </div>
         </div>
-      </div>
       </Router>
     </React.Fragment>)
   }

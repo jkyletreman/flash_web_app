@@ -40,7 +40,6 @@ export default class Test extends React.Component {
       clickFX.display = 'block'
       this.setState({clickFX: clickFX})
     }
-
   render() {
     return (<MuiThemeProvider>
       <React.Fragment>

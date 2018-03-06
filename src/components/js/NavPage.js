@@ -45,11 +45,6 @@ const grid = {
 export default class NavPage extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
-    const text = this.props.getTextValue(e)
   }
 /* each Circle Component requires
   # onMouseEnter && onMouseLeave event
@@ -99,7 +94,7 @@ export default class NavPage extends React.Component {
           </div>
         <div style={this.props.combineStyleObjects(grid.IconContainer, {paddingTop: '5%'})}>
           <Link to='/about' style={this.props.combineStyleObjects({textDecoration: 'none' }, grid.IconLeft)}>
-            <Icon colors={this.props.colors} text={'school'} grid={grid.IconLeft} />
+            <Icon colors={this.props.colors} text={'school'} />
           </Link>
           <Icon colors={this.props.colors} text={'person_pin'} grid={grid.IconRight} />
         </div>
