@@ -30,22 +30,43 @@ export default class Train extends React.Component {
       hoverFX: {
         opacity: '0.8'
       },
-      questions: null
+      question: null,
+      answer: null,
+      questions: [],
+      indexs: []
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
+    this.randomCard = this.randomCard.bind(this)
   }
-
+  // initiating fetch on load
+  componentDidMount() {
+    this.fetchCards();
+  }
   // pulling cards from DB
   async fetchCards() {
     const response = await fetch('http://localhost:8000/cards');
     const cards = await response.json();
     this.setState({questions: cards})
+    this.randomCard(cards);
   }
-  // initiating fetch on load
-  componentDidMount() {
-    this.fetchCards();
+  // get random card
+  randomCard(array) {
+    const indexs = this.state.indexs;
+    const randomIdx = Math.floor((Math.random() * array.length));
+
+    if (indexs.includes(randomIdx)) {
+      this.randomCard(array);
+    } else {
+      indexs.push(randomIdx);
+    }
+
+    const question = array[randomIdx].question
+    const answer = array[randomIdx].answer
+    this.setState({indexs: indexs})
+    this.setState({question: question});
+    this.setState({answer: answer});
   }
 
   // event handlers (Ui/Ux)
@@ -80,7 +101,7 @@ export default class Train extends React.Component {
           combineStyleObjects={this.props.combineStyleObjects}
           grid={grid.question}
           style={this.props.colors.white}
-          text={'Question?'}
+          text={this.state.question}
         />
         {/* Answer */}
         <Rectangle
@@ -94,11 +115,19 @@ export default class Train extends React.Component {
           combineStyleObjects={this.props.combineStyleObjects}
           grid={grid.answer}
           style={this.props.colors.blue}
-          text={'Answer!'}
+          text={this.state.answer}
         />
       </div>
-      <CardNav colors={this.props.colors} combineStyleObjects={this.props.combineStyleObjects}/> 
-      <NavBar colors={this.props.colors} combineStyleObjects={this.props.combineStyleObjects}/>
+      {/* App navigation */}
+      <CardNav
+        colors={this.props.colors}
+        combineStyleObjects={this.props.combineStyleObjects}
+        randomCard={this.randomCard}
+      />
+      <NavBar
+        colors={this.props.colors}
+        combineStyleObjects={this.props.combineStyleObjects}
+      />
     </React.Fragment>)
   }
 }

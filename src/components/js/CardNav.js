@@ -24,8 +24,11 @@ const grid = {
 export default class CardNav extends Component {
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
-  
+  handleClick() {
+    this.props.randomCard()
+  }
   render() {
     return (<MuiThemeProvider>
       <React.Fragment>
@@ -33,7 +36,7 @@ export default class CardNav extends Component {
           {/* previous card */}
           <Icon colors={this.props.colors} text={'fast_rewind'} grid={grid.IconLeft} />
           {/* next card */}
-          <Icon colors={this.props.colors} text={'fast_forward'} grid={grid.IconRight} />
+          <Icon colors={this.props.colors} text={'fast_forward'} grid={grid.IconRight} onClick={this.handleClick}/>
         </div>
       </React.Fragment>
     </MuiThemeProvider>)
