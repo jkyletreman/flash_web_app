@@ -63,6 +63,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.combineStyleObjects = this.combineStyleObjects.bind(this)
+    this.fetchCards = this.fetchCards.bind(this)
     this.state = {
       isRendering: true // target for setTimeout function ** SET TO FALSE FOR TRANSITION
     }
@@ -83,6 +84,12 @@ class App extends Component {
     }, {});
     return resultObject
   }
+  // Function for fetching cards
+  async fetchCards() {
+    const response = await fetch('http://localhost:8000/cards');
+    const json = await response.json();
+    return json;
+  }
   /*
   Each Page takes
   # combineStyleObjects function
@@ -98,8 +105,8 @@ class App extends Component {
             : (<Switch>
                 <Route exact path='/' render={() => <NavPage colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
                 <Route path='/create' render={() => <Create colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
-                <Route path='/train' render={() => <Train colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
-                <Route path='/test' render={() => <Test colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
+                <Route path='/train' render={() => <Train colors={colors} combineStyleObjects={this.combineStyleObjects} fetchCards={this.fetchCards} />}/>
+                <Route path='/test' render={() => <Test colors={colors} combineStyleObjects={this.combineStyleObjects} fetchCards={this.fetchCards} />}/>
                 <Route path='/about' component={About} />
               </Switch>)
             }
