@@ -1,6 +1,7 @@
 import React from 'react'
 import Rectangle from './Rectangle'
 import NavBar from './NavBar'
+import CardNav from './CardNav'
 // positioning to pass each rendered component
 const grid = {
   container: {
@@ -63,7 +64,7 @@ export default class Train extends React.Component {
     mouseLeaveFX.opacity = '0.8'
     this.setState({hoverFX: mouseLeaveFX})
   }
-  
+
   render() {
     return (<React.Fragment>
       <div style={grid.container}>
@@ -96,6 +97,7 @@ export default class Train extends React.Component {
           text={'Answer!'}
         />
       </div>
+      <CardNav colors={this.props.colors} combineStyleObjects={this.props.combineStyleObjects}/> 
       <NavBar colors={this.props.colors} combineStyleObjects={this.props.combineStyleObjects}/>
     </React.Fragment>)
   }
