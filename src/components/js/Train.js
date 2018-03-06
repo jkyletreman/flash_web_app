@@ -63,6 +63,7 @@ export default class Train extends React.Component {
     mouseLeaveFX.opacity = '0.8'
     this.setState({hoverFX: mouseLeaveFX})
   }
+  
   render() {
     return (<React.Fragment>
       <div style={grid.container}>
