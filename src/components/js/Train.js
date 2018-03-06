@@ -33,7 +33,7 @@ export default class Train extends React.Component {
       question: null,
       answer: null,
       cards: [],
-      indexs: [1]
+      indexs: []
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
@@ -53,12 +53,17 @@ export default class Train extends React.Component {
   }
   // get random card
   randomCard(array) {
+    // reset Answer to display null
+    const clickFX = {...this.state.clickFX}
+    clickFX.display = 'none'
+    this.setState({clickFX: clickFX})
+    // grab indexs that have been used
     const indexs = this.state.indexs;
-    const unused = array.filter((card, index) => !indexs.includes(index))
-    const randomIdx = Math.floor((Math.random() * unused.length));
-    // TODO: Need to track the Original Index to knock out the cards
-    const question = unused[randomIdx].question
-    const answer = unused[randomIdx].answer
+    const remainingCards = array.filter((card, index) => !indexs.includes(index))
+    const randomIdx = Math.floor((Math.random() * remainingCards.length));
+    // reset state
+    const question = remainingCards[randomIdx].question
+    const answer = remainingCards[randomIdx].answer
     this.setState({indexs: indexs, question: question, answer: answer});
   }
 
@@ -112,14 +117,15 @@ export default class Train extends React.Component {
         />
       </div>
       {/* App navigation */}
-      {/* TODO conditionally render based on cards being not empty  */}
+      {(this.state.clickFX.display === 'block') ?
       <CardNav
         colors={this.props.colors}
         combineStyleObjects={this.props.combineStyleObjects}
         randomCard={this.randomCard}
         cards={this.state.cards}
         indexs={this.state.indexs}
-      />
+      /> : null
+    }
       <NavBar
         colors={this.props.colors}
         combineStyleObjects={this.props.combineStyleObjects}
