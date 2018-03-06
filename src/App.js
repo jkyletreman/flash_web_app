@@ -7,6 +7,7 @@ import NavPage from './components/js/NavPage'
 import Train from './components/js/Train'
 import Test from './components/js/Test'
 import Create from './components/js/Create'
+import About from './components/js/About'
 // import AnimationTest from './components/js/AnimationsTest'
 
 const colors = {
@@ -62,16 +63,11 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.combineStyleObjects = this.combineStyleObjects.bind(this)
-    this.getTextValue = this.getTextValue.bind(this)
-
     this.state = {
-      isRendering: true // target for timer function
+      isRendering: true // target for setTimeout function ** SET TO FALSE FOR TRANSITION
     }
   }
-  getTextValue(e) {
-    this.setState({isRendering: e.target.innerText})
-  }
-
+  // handles transition of Start to NavPage
   componentDidMount() {
     setTimeout(() => this.setState({isRendering: true}), 3000);
   }
@@ -95,15 +91,19 @@ class App extends Component {
   render() {
     return (<React.Fragment>
       <Router>
+        <div>
         <div style={spacing} className="App">
-          {!this.state.isRendering ?
-          (<Start colors={colors}/>) : (<Switch>
-            <Route exact path='/' render={() => <NavPage getTextValue={this.getTextValue} colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
-            <Route path='/create' render={() => <Create colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
-            <Route path='/train' render={() => <Train colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
-            <Route path='/test' render={() => <Test colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
-          </Switch>
-        )}
+          {!this.state.isRendering
+            ? (<Start colors={colors}/>)
+            : (<Switch>
+                <Route exact path='/' render={() => <NavPage colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
+                <Route path='/create' render={() => <Create colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
+                <Route path='/train' render={() => <Train colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
+                <Route path='/test' render={() => <Test colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
+                <Route path='/about' component={About} />
+              </Switch>)
+            }
+          </div>
         </div>
       </Router>
     </React.Fragment>)

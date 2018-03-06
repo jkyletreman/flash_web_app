@@ -3,8 +3,6 @@ import Rectangle from './Rectangle'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import NavBar from './NavBar'
 
-
-
 const grid = {
   container: {
     display: 'grid',
@@ -42,7 +40,6 @@ export default class Test extends React.Component {
       clickFX.display = 'block'
       this.setState({clickFX: clickFX})
     }
-
   render() {
     return (<MuiThemeProvider>
       <React.Fragment>
