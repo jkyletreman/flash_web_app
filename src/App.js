@@ -63,7 +63,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.combineStyleObjects = this.combineStyleObjects.bind(this)
-    this.fetchCards = this.fetchCards.bind(this)
+    // this.fetchCards = this.fetchCards.bind(this)
     this.state = {
       isRendering: true // target for setTimeout function ** SET TO FALSE FOR TRANSITION
     }
@@ -85,11 +85,11 @@ class App extends Component {
     return resultObject
   }
   // Function for fetching cards
-  async fetchCards() {
-    const response = await fetch('http://localhost:8000/cards');
-    const json = await response.json();
-    return json;
-  }
+  // async fetchCards() {
+  //   const response = await fetch('http://localhost:8000/cards');
+  //   const json = await response.json();
+  //   return json;
+  // }
   /*
   Each Page takes
   # combineStyleObjects function
