@@ -5,7 +5,7 @@ import Icon from './Icon'
 const grid = {
   IconContainer: {
     display: 'grid',
-    maxWidth: '70%',
+    maxWidth: '60%',
     margin: '0 auto'
   },
   IconLeft: {

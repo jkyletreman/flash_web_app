@@ -64,7 +64,7 @@ export default class Train extends React.Component {
     this.setState({hoverFX: mouseLeaveFX})
   }
   render() {
-    return (
+    return (<React.Fragment>
       <div style={grid.container}>
         {/* Question */}
         <Rectangle
@@ -94,8 +94,8 @@ export default class Train extends React.Component {
           style={this.props.colors.blue}
           text={'Answer!'}
         />
-        <NavBar colors={this.props.colors} combineStyleObjects={this.props.combineStyleObjects}/>
       </div>
-    )
+      <NavBar colors={this.props.colors} combineStyleObjects={this.props.combineStyleObjects}/>
+    </React.Fragment>)
   }
 }
