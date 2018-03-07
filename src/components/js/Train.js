@@ -30,8 +30,8 @@ export default class Train extends React.Component {
       hoverFX: {
         opacity: '0.8'
       },
-      question: null,
-      answer: null,
+      question: '',
+      answer: '',
       cards: [],
       indexs: []
     }
@@ -67,20 +67,20 @@ export default class Train extends React.Component {
     // check to make sure we are not out of cards
     if (this.state.cards.length !== this.state.indexs.length || this.state.indexs.length === 0) {
     // add new card to list of knockouts via original index
-    this.state.cards.forEach((card, index) => {
-      if (card.question === question) {
-        indexs.push(index)
-      }
-    })
-    // if all the cards have been used
-  } else if (this.state.cards.length === this.state.indexs.length) {
-    // need to add a condintional render here for "training complete"
-    this.setState({})
-  } else {
-    // not sure what I wanted to do with the else
-    this.setState({})
-  }
-    this.setState({indexs: indexs, question: question, answer: answer});
+      this.state.cards.forEach((card, index) => {
+        if (card.question === question) {
+          indexs.push(index)
+        }
+      })
+      // if all the cards have been used
+    } else if (this.state.cards.length === this.state.indexs.length) {
+      // need to add a condintional render here for "training complete"
+      this.setState({indexs: [], question: "Congrats! You've completed you're training", answer: "Click next to reload the cards"})
+    } else {
+      // not sure what I wanted to do with the else
+      this.setState({})
+    }
+      this.setState({indexs: indexs, question: question, answer: answer});
   }
 
   // event handlers (Ui/Ux)
@@ -142,8 +142,7 @@ export default class Train extends React.Component {
           cards={this.state.cards}
           indexs={this.state.indexs}
         />
-      : null
-      }
+      : null}
       <NavBar
         colors={this.props.colors}
         combineStyleObjects={this.props.combineStyleObjects}

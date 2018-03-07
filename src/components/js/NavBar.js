@@ -38,7 +38,7 @@ export default class NavBar extends Component {
       <React.Fragment>
         <div style={this.props.combineStyleObjects(grid.IconContainer, {paddingTop: '5%'})}>
           <Icon colors={this.props.colors} text={'school'} grid={grid.IconLeft}/>
-          <Icon colors={this.props.colors} text={'group_work'} grid={grid.IconCenter} onClick={this.handleClick}/>
+          <Icon colors={this.props.colors} text={'history'} grid={grid.IconCenter} onClick={this.handleClick}/>
           <Icon colors={this.props.colors} text={'person_pin'} grid={grid.IconRight}/>
         </div>
       </React.Fragment>
