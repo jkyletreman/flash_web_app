@@ -32,7 +32,6 @@ export default class Test extends React.Component {
     this.state = {
       clickFX: {
         display: 'none',
-        isRendering: false
       },
       question: '',
       firstChoice: '',
@@ -45,7 +44,7 @@ export default class Test extends React.Component {
     }
       this.handleClick = this.handleClick.bind(this);
       this.randomCard = this.randomCard.bind(this);
-      this.renderAnswer = this.renderAnswer(this);
+      this.handleClick2 = this.handleClick2.bind(this);
     }
     // initiating fetch on load
     componentWillMount() {
@@ -60,11 +59,12 @@ export default class Test extends React.Component {
     }
     // get random card (contains a question and answer)
     randomCard(array) {
-      // reset Answer to display null
+      // reset Answer to display null and the choice colors
       const clickFX = {...this.state.clickFX}
       clickFX.display = 'none';
-      clickFX.isRendering = false;
       this.setState({clickFX: clickFX})
+      this.setState({firstColor: this.props.colors.blue, secondColor: this.props.colors.green})
+
       // grab indexs that have been used, filter out used cards, get random from remaining
       const indexs = this.state.indexs;
       const remainingCards = array.filter((card, index) => !indexs.includes(index))
@@ -93,8 +93,17 @@ export default class Test extends React.Component {
         this.setState({indexs: indexs, firstChoice: firstChoice, secondChoice: secondChoice, question: question, answer: answer});
     }
     // Right/wrong
-    renderAnswer() {
-      
+    handleClick2() {
+      const checkAnswer = this.state.answer;
+      const checkFirstChoice = this.state.firstChoice;
+      const checkSecondChoice = this.state.secondChoice;
+
+      if (checkAnswer === checkFirstChoice) {
+        this.setState({firstColor: this.props.colors.right, secondColor: this.props.colors.wrong})
+      } else {
+        this.setState({firstColor: this.props.colors.wrong, secondColor: this.props.colors.right})
+
+      }
     }
     // Ux/Ui
     handleClick() {
@@ -114,30 +123,26 @@ export default class Test extends React.Component {
           grid={grid.question}
           text={this.state.question}
         />
-        {this.state.clickFX.isRendering
-          ? null
-          : <Rectangle
-              // State
-              fx={this.state.clickFX}
-              // Style & Props
-              combineStyleObjects={this.props.combineStyleObjects}
-              style={this.state.firstColor}
-              grid={grid.answer1}
-              text={this.state.firstChoice}
-              onClick={this.renderAnswer}
-            />}
-        {this.state.clickFX.isRendering
-          ? null
-          : <Rectangle
-            // State
-            fx={this.state.clickFX}
-            // Style & Props
-            combineStyleObjects={this.props.combineStyleObjects}
-            style={this.state.secondColor}
-            grid={grid.answer2}
-            text={this.state.secondChoice}
-            onClick={this.renderAnswer}
-          />}
+        <Rectangle
+          // State
+          fx={this.state.clickFX}
+          // Style & Props
+          combineStyleObjects={this.props.combineStyleObjects}
+          style={this.state.firstColor}
+          grid={grid.answer1}
+          text={this.state.firstChoice}
+          onClick={this.handleClick2}
+        />
+        <Rectangle
+          // State
+          fx={this.state.clickFX}
+          // Style & Props
+          combineStyleObjects={this.props.combineStyleObjects}
+          style={this.state.secondColor}
+          grid={grid.answer2}
+          text={this.state.secondChoice}
+          onClick={this.handleClick2}
+        />
       </div>
       {
         (this.state.clickFX.display === 'block')
