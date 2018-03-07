@@ -31,16 +31,21 @@ export default class Test extends React.Component {
     super(props);
     this.state = {
       clickFX: {
-        display: 'none'
+        display: 'none',
+        isRendering: false
       },
       question: '',
       firstChoice: '',
       secondChoice: '',
+      answer: '',
       cards:[],
-      indexs: []
+      indexs: [],
+      firstColor: this.props.colors.blue,
+      secondColor: this.props.colors.green,
     }
       this.handleClick = this.handleClick.bind(this);
       this.randomCard = this.randomCard.bind(this);
+      this.renderAnswer = this.renderAnswer(this);
     }
     // initiating fetch on load
     componentWillMount() {
@@ -57,20 +62,20 @@ export default class Test extends React.Component {
     randomCard(array) {
       // reset Answer to display null
       const clickFX = {...this.state.clickFX}
-      clickFX.display = 'none'
+      clickFX.display = 'none';
+      clickFX.isRendering = false;
       this.setState({clickFX: clickFX})
       // grab indexs that have been used, filter out used cards, get random from remaining
       const indexs = this.state.indexs;
       const remainingCards = array.filter((card, index) => !indexs.includes(index))
       const randomIdx = Math.floor((Math.random() * remainingCards.length));
-      // set new question and answer
-      var question = ""
-      var answer = ""
       // check to make sure we are not out of cards
       if (this.state.cards.length !== this.state.indexs.length || this.state.indexs.length === 0) {
         // add new card to list of knockouts via original index
         var question = remainingCards[randomIdx].question
         var firstChoice = remainingCards[randomIdx].answer
+        // TODO need to change this into a random display
+        var answer = firstChoice
         var secondChoice = remainingCards[(randomIdx + 1) % 8].answer
 
         this.state.cards.forEach((card, index) => {
@@ -81,13 +86,17 @@ export default class Test extends React.Component {
         // if all the cards have been used
       } else if (this.state.cards.length === this.state.indexs.length) {
         // need to add a condintional render here for "training complete"
-        this.setState({indexs: [], question: '', answer: ''})
       } else {
         // not sure what I wanted to do with the else
         this.setState({})
       }
-        this.setState({indexs: indexs, firstChoice: firstChoice, secondChoice: secondChoice, question: question});
+        this.setState({indexs: indexs, firstChoice: firstChoice, secondChoice: secondChoice, question: question, answer: answer});
     }
+    // Right/wrong
+    renderAnswer() {
+      
+    }
+    // Ux/Ui
     handleClick() {
       const clickFX = {...this.state.clickFX}
       clickFX.display = 'block'
@@ -105,25 +114,30 @@ export default class Test extends React.Component {
           grid={grid.question}
           text={this.state.question}
         />
-        <Rectangle
-          onClick={this.handleClick}
-          // State
-          fx={this.state.clickFX}
-          // Style & Props
-          combineStyleObjects={this.props.combineStyleObjects}
-          style={this.props.colors.blue}
-          grid={grid.answer1}
-          text={this.state.firstChoice}
-        />
-        <Rectangle
-          onClick={this.handleClick}
-          // State
-          fx={this.state.clickFX}
-          // Style & Props
-          combineStyleObjects={this.props.combineStyleObjects}
-          style={this.props.colors.green}
-          grid={grid.answer2}
-          text={this.state.secondChoice}/>
+        {this.state.clickFX.isRendering
+          ? null
+          : <Rectangle
+              // State
+              fx={this.state.clickFX}
+              // Style & Props
+              combineStyleObjects={this.props.combineStyleObjects}
+              style={this.state.firstColor}
+              grid={grid.answer1}
+              text={this.state.firstChoice}
+              onClick={this.renderAnswer}
+            />}
+        {this.state.clickFX.isRendering
+          ? null
+          : <Rectangle
+            // State
+            fx={this.state.clickFX}
+            // Style & Props
+            combineStyleObjects={this.props.combineStyleObjects}
+            style={this.state.secondColor}
+            grid={grid.answer2}
+            text={this.state.secondChoice}
+            onClick={this.renderAnswer}
+          />}
       </div>
       {
         (this.state.clickFX.display === 'block')
