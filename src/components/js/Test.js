@@ -2,6 +2,7 @@ import React from 'react'
 import Rectangle from './Rectangle'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import NavBar from './NavBar'
+import CardNav from './CardNav'
 
 const grid = {
   container: {
@@ -31,9 +32,61 @@ export default class Test extends React.Component {
     this.state = {
       clickFX: {
         display: 'none'
-      }
+      },
+      question: '',
+      firstChoice: '',
+      secondChoice: '',
+      cards:[],
+      indexs: []
     }
       this.handleClick = this.handleClick.bind(this);
+      this.randomCard = this.randomCard.bind(this);
+    }
+    // initiating fetch on load
+    componentWillMount() {
+      this.fetchCards();
+    }
+    // pulling cards from DB
+    async fetchCards() {
+      const response = await fetch('http://localhost:8000/cards');
+      const cards = await response.json();
+      this.setState({cards: cards})
+      this.randomCard(cards);
+    }
+    // get random card (contains a question and answer)
+    randomCard(array) {
+      // reset Answer to display null
+      const clickFX = {...this.state.clickFX}
+      clickFX.display = 'none'
+      this.setState({clickFX: clickFX})
+      // grab indexs that have been used, filter out used cards, get random from remaining
+      const indexs = this.state.indexs;
+      const remainingCards = array.filter((card, index) => !indexs.includes(index))
+      const randomIdx = Math.floor((Math.random() * remainingCards.length));
+      // set new question and answer
+      var question = ""
+      var answer = ""
+      // check to make sure we are not out of cards
+      if (this.state.cards.length !== this.state.indexs.length || this.state.indexs.length === 0) {
+        // add new card to list of knockouts via original index
+        var question = remainingCards[randomIdx].question
+        var firstChoice = remainingCards[randomIdx].answer
+        var secondChoice = remainingCards[(randomIdx + 1) % 8].answer
+
+        this.state.cards.forEach((card, index) => {
+          if (card.question === question) {
+            indexs.push(index)
+          }
+        })
+        // if all the cards have been used
+      } else if (this.state.cards.length === this.state.indexs.length) {
+        // need to add a condintional render here for "training complete"
+        this.setState({indexs: [], question: '', answer: ''})
+      } else {
+        // not sure what I wanted to do with the else
+        this.setState({})
+      }
+        this.setState({indexs: indexs, firstChoice: firstChoice, secondChoice: secondChoice, question: question});
     }
     handleClick() {
       const clickFX = {...this.state.clickFX}
@@ -50,7 +103,7 @@ export default class Test extends React.Component {
           combineStyleObjects={this.props.combineStyleObjects}
           style={this.props.colors.white}
           grid={grid.question}
-          text={'Question?'}
+          text={this.state.question}
         />
         <Rectangle
           onClick={this.handleClick}
@@ -60,7 +113,7 @@ export default class Test extends React.Component {
           combineStyleObjects={this.props.combineStyleObjects}
           style={this.props.colors.blue}
           grid={grid.answer1}
-          text={'Choice #1'}
+          text={this.state.firstChoice}
         />
         <Rectangle
           onClick={this.handleClick}
@@ -70,8 +123,18 @@ export default class Test extends React.Component {
           combineStyleObjects={this.props.combineStyleObjects}
           style={this.props.colors.green}
           grid={grid.answer2}
-          text={'Choice #2'}/>
+          text={this.state.secondChoice}/>
       </div>
+      {
+        (this.state.clickFX.display === 'block')
+      ? <CardNav
+          colors={this.props.colors}
+          combineStyleObjects={this.props.combineStyleObjects}
+          randomCard={this.randomCard}
+          cards={this.state.cards}
+          indexs={this.state.indexs}
+        />
+      : null}
       <NavBar colors={this.props.colors} combineStyleObjects={this.props.combineStyleObjects}/>
     </React.Fragment>
   </MuiThemeProvider>)
