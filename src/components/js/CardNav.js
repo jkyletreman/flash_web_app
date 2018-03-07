@@ -30,10 +30,6 @@ export default class CardNav extends Component {
     }
     this.handleClick = this.handleClick.bind(this);
   }
-  componentDidMount() {
-    // console.log(this.props.cards)
-  }
-
   handleClick() {
     this.props.randomCard(this.state.cards)
   }
