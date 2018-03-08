@@ -36,7 +36,7 @@ export default class CardNav extends Component {
   render() {
     return (<MuiThemeProvider>
       <React.Fragment>
-        <div style={this.props.combineStyleObjects(grid.IconContainer, {paddingTop: '5%'})}>
+        <div style={this.props.combineStyleObjects(grid.IconContainer, {paddingTop: '1%'})}>
           {/* previous card */}
           <Icon colors={this.props.colors} text={'fast_rewind'} grid={grid.IconLeft} />
           {/* next card */}

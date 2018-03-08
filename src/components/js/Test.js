@@ -17,12 +17,12 @@ const grid = {
   answer1: {
     gridRow: '2',
     gridColumn: '1',
-    marginTop: '4%'
+    marginTop: '3%'
   },
   answer2: {
     gridRow: '3',
     gridColumn: '1',
-    marginTop: '4%'
+    marginTop: '3%'
   }
 }
 
@@ -114,7 +114,7 @@ export default class Test extends React.Component {
   render() {
     return (<MuiThemeProvider>
       <React.Fragment>
-      <div style={grid.container}>
+      <div style={this.props.combineStyleObjects(grid.container, {paddingBottom: '2%'})}>
         <Rectangle
           onClick={this.handleClick}
           // Style & Props
