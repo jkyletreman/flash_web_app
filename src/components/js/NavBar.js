@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Icon from './Icon'
+import {Link} from 'react-router-dom'
 
 const grid = {
   IconContainer: {
@@ -37,7 +38,9 @@ export default class NavBar extends Component {
     return (<MuiThemeProvider>
       <React.Fragment>
         <div style={this.props.combineStyleObjects(grid.IconContainer, {paddingTop: '1%'})}>
-          <Icon colors={this.props.colors} text={'school'} grid={grid.IconLeft}/>
+          <Link to='/about' style={this.props.combineStyleObjects({textDecoration: 'none' }, grid.IconLeft)}>
+            <Icon colors={this.props.colors} text={'school'} grid={grid.IconLeft}/>
+          </Link>
           <Icon colors={this.props.colors} text={'history'} grid={grid.IconCenter} onClick={this.handleClick}/>
           <Icon colors={this.props.colors} text={'person_pin'} grid={grid.IconRight}/>
         </div>

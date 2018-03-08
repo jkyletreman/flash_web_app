@@ -1,4 +1,5 @@
 import React from 'react'
+import NavBar from './NavBar'
 
 const style = {
   padding: '5%',
@@ -8,24 +9,28 @@ const style = {
   maxWidth: '40%',
   border: '5px solid black',
   listStylePosition: 'center',
-  color: 'white',
+  color: 'white'
 }
 
-function About() {
-  return (
-    <React.Fragment >
-      <div style={{paddingTop: '10%'}}>
-      <ul style={style}>
-        <li>React</li>
-        <li>React Router</li>
-        <li>Material UI Icons</li>
-        <li>NodeJS</li>
-        <li>Knex</li>
-        <li>PostgreSQL</li>
-      </ul>
-    </div>
-    </React.Fragment>
-  )
+export default class About extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (<React.Fragment >
+      <div style={{
+          paddingTop: '10%'
+        }}>
+        <ul style={style}>
+          <li>React</li>
+          <li>React Router</li>
+          <li>Material UI Icons</li>
+          <li>NodeJS</li>
+          <li>Knex</li>
+          <li>PostgreSQL</li>
+        </ul>
+      </div>
+      <NavBar colors={this.props.colors} combineStyleObjects={this.props.combineStyleObjects}/>
+    </React.Fragment>)
+  }
 }
-
-export default About

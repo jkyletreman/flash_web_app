@@ -107,7 +107,7 @@ class App extends Component {
                 <Route path='/create' render={() => <Create colors={colors} combineStyleObjects={this.combineStyleObjects}/>}/>
                 <Route path='/train' render={() => <Train colors={colors} combineStyleObjects={this.combineStyleObjects} fetchCards={this.fetchCards} />}/>
                 <Route path='/test' render={() => <Test colors={colors} combineStyleObjects={this.combineStyleObjects} fetchCards={this.fetchCards} />}/>
-                <Route path='/about' component={About} />
+                <Route path='/about' render={() => <About colors={colors} combineStyleObjects={this.combineStyleObjects}/>} />
               </Switch>)
             }
           </div>
