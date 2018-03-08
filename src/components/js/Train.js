@@ -62,7 +62,7 @@ export default class Train extends React.Component {
     const remainingCards = array.filter((card, index) => !indexs.includes(index))
     const randomIdx = Math.floor((Math.random() * remainingCards.length));
     // set new question and answer
-    var question = "Congrats! You've completed you're training"
+    var question = "Congrats! You've completed you're training, You can click again to display the card navigation and restart your training! Thanks for using Flash"
     var answer = "Click next to reload the cards"
     // check to make sure we are not out of cards
     if (this.state.cards.length !== this.state.indexs.length || this.state.indexs.length === 0) {
