@@ -13,7 +13,8 @@ export default class Rectangle extends React.Component {
         height: '200px',
         width: '360px',
         textAlign: 'center',
-        margin: '0 auto'
+        margin: '0 auto',
+        boxShadow: '7px 5px 5px rgba(73, 74, 73, 0.49)'
       },
       hoverFX: {
         opacity: '0.8',
