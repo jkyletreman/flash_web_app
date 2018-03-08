@@ -36,7 +36,7 @@ export default class NavBar extends Component {
   render() {
     return (<MuiThemeProvider>
       <React.Fragment>
-        <div style={this.props.combineStyleObjects(grid.IconContainer, {paddingTop: '5%'})}>
+        <div style={this.props.combineStyleObjects(grid.IconContainer, {paddingTop: '1%'})}>
           <Icon colors={this.props.colors} text={'school'} grid={grid.IconLeft}/>
           <Icon colors={this.props.colors} text={'history'} grid={grid.IconCenter} onClick={this.handleClick}/>
           <Icon colors={this.props.colors} text={'person_pin'} grid={grid.IconRight}/>

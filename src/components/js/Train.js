@@ -104,7 +104,7 @@ export default class Train extends React.Component {
 
   render() {
     return (<React.Fragment>
-      <div style={grid.container}>
+      <div style={this.props.combineStyleObjects(grid.container, {paddingBottom: '2%'})}>
         {/* Question */}
         <Rectangle
           //Events
