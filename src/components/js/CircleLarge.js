@@ -18,7 +18,7 @@ export default class CircleSmall extends React.Component {
         margin: '0 auto',
         textAlign: 'center',
         width: '160px',
-        boxShadow: '7px 5px 5px rgba(73, 74, 73, 0.49)'
+        boxShadow: '3px 5px 5px rgba(73, 74, 73, 0.49)'
       },
       hoverFX: {
         opacity: '0.8',
