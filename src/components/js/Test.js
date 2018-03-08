@@ -52,7 +52,7 @@ export default class Test extends React.Component {
     }
     // pulling cards from DB
     async fetchCards() {
-      const response = await fetch('http://localhost:8000/cards');
+      const response = await fetch('https://flash-app-galvanize.herokuapp.com/cards');
       const cards = await response.json();
       this.setState({cards: cards})
       this.randomCard(cards);
