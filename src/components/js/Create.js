@@ -6,17 +6,19 @@ const style = {
   marginTop: '10%',
   display: 'grid',
   maxWidth: '40%',
-  paddingBottom: '5%'
+  paddingBottom: '5%',
 }
 const grid = {
   oneL: {
     gridRow: '1',
     gridColumn: '1',
-    maxWidth: '30%'
+    maxWidth: '30%',
   },
   oneR: {
     gridRow: '1',
     gridColumn: '2',
+    fontSize: '26px',
+    fontFamily: 'Brawler'
   },
   twoL: {
     gridRow: '2',
@@ -26,10 +28,13 @@ const grid = {
   twoR: {
     gridRow: '2',
     gridColumn: '2',
+    fontSize: '26px',
+    fontFamily: 'Brawler'
   },
   button: {
     display: 'flex',
     margin: '0 auto',
+    marginBottom: '5%',
   }
 }
 
@@ -63,7 +68,7 @@ export default class Create extends React.Component {
   render() {
     return (
       <React.Fragment>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit} >
             <div style={style}>
               <label style={grid.oneL}>Question</label>
               <input
@@ -85,8 +90,6 @@ export default class Create extends React.Component {
             </div>
             <input style={grid.button} type='submit' value='Add a Card' />
           </form>
-
-
           <NavBar colors={this.props.colors} combineStyleObjects={this.props.combineStyleObjects}/>
       </React.Fragment>)
   }
