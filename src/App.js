@@ -65,7 +65,7 @@ class App extends Component {
     this.combineStyleObjects = this.combineStyleObjects.bind(this)
     // this.fetchCards = this.fetchCards.bind(this)
     this.state = {
-      isRendering: true // target for setTimeout function ** SET TO FALSE FOR TRANSITION
+      isRendering: false // target for setTimeout function ** SET TO FALSE FOR TRANSITION
     }
   }
   // handles transition of Start to NavPage
