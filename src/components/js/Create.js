@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from './NavBar'
+import axios from 'axios'
 const style = {
   margin: '0 auto',
   marginTop: '10%',
@@ -43,17 +44,12 @@ export default class Create extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   async createCard({question, answer}) {
-    const response = await fetch("http://localhost:8000/create", {
-      method: "post",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
+    axios.post("http://localhost:8000/create", {
         question,
         answer
-      })
-    })
+      }).then(function(response) {console.log(response)})
+      .catch()
+
     // const json = await response.json()
     this.setState({question: '', answer: ''})
   }
