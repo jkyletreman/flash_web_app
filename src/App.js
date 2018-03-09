@@ -8,7 +8,6 @@ import Train from './components/js/Train'
 import Test from './components/js/Test'
 import Create from './components/js/Create'
 import About from './components/js/About'
-// import AnimationTest from './components/js/AnimationsTest'
 
 const colors = {
   pink: {
@@ -85,16 +84,12 @@ class App extends Component {
     // }, {});
     // return resultObject
   }
-  // Function for fetching cards
-  // async fetchCards() {
-  //   const response = await fetch('http://localhost:8000/cards');
-  //   const json = await response.json();
-  //   return json;
-  // }
   /*
   Each Page takes
   # combineStyleObjects function
   # full colors obj -L2 with matching borders + Icon styling
+  Train/Test take
+  # fetchCards
   */
   render() {
     return (<React.Fragment>
@@ -119,5 +114,3 @@ class App extends Component {
 }
 
 export default App;
-{/* <AnimationTest combineStyleObjects={this.combineStyleObjects} colors={colors}/> */
-}
