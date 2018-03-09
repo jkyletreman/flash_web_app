@@ -74,15 +74,16 @@ class App extends Component {
   }
   // combines multiple 1 level objects into a single object for inline style
   combineStyleObjects(...params) {
-    var resultObject = params.reduce((result, currentObject) => {
-      for (var key in currentObject) {
-        if (currentObject.hasOwnProperty(key)) {
-          result[key] = currentObject[key];
-        }
-      }
-      return result;
-    }, {});
-    return resultObject
+    return Object.assign({}, ...(params).map(p => Object.freeze(p)));
+    // var resultObject = params.reduce((result, currentObject) => {
+    //   for (var key in currentObject) {
+    //     if (currentObject.hasOwnProperty(key)) {
+    //       result[key] = currentObject[key];
+    //     }
+    //   }
+    //   return result;
+    // }, {});
+    // return resultObject
   }
   // Function for fetching cards
   // async fetchCards() {

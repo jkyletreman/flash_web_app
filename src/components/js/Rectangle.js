@@ -22,6 +22,7 @@ export default class Rectangle extends React.Component {
         border: this.props.style.border
       }
     }
+    console.log('Rectangle CONSTRUCTION!', this.props.style.border, this.state.hoverFX)
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
@@ -37,7 +38,16 @@ export default class Rectangle extends React.Component {
     mouseLeaveFX.border = this.props.style.border
     this.setState({hoverFX: mouseLeaveFX})
   }
-
+  componentWillReceiveProps(nextProps) {
+    if (this.props.fx && this.props.fx.display === 'block') {
+      this.setState({
+        hoverFX: {
+          opacity: '0.8',
+          border: nextProps.style.border
+        }
+      })
+    }
+  }
   render() {
     return (
       <div

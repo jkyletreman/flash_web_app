@@ -60,10 +60,10 @@ export default class Test extends React.Component {
     // get random card (contains a question and answer)
     randomCard(array) {
       // reset Answer to display null and the choice colors
+      this.setState({firstColor: this.props.colors.blue, secondColor: this.props.colors.green})
       const clickFX = {...this.state.clickFX}
       clickFX.display = 'none';
       this.setState({clickFX: clickFX})
-      this.setState({firstColor: this.props.colors.blue, secondColor: this.props.colors.green})
 
       // grab indexs that have been used, filter out used cards, get random from remaining
       const indexs = this.state.indexs;
@@ -90,7 +90,7 @@ export default class Test extends React.Component {
         // not sure what I wanted to do with the else
         this.setState({})
       }
-        this.setState({indexs: indexs, firstChoice: firstChoice, secondChoice: secondChoice, question: question, answer: answer});
+        this.setState({indexs: indexs, firstChoice: firstChoice, secondChoice: secondChoice, question: question, answer: answer})
     }
     // Right/wrong
     handleClick2() {
@@ -112,6 +112,7 @@ export default class Test extends React.Component {
       this.setState({clickFX: clickFX})
     }
   render() {
+    console.log('Rendering', this.state)
     return (<MuiThemeProvider>
       <React.Fragment>
       <div style={this.props.combineStyleObjects(grid.container, {paddingBottom: '2%'})}>
