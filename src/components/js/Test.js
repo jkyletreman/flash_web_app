@@ -42,9 +42,9 @@ export default class Test extends React.Component {
       firstColor: this.props.colors.blue,
       secondColor: this.props.colors.green,
     }
-      this.handleClick = this.handleClick.bind(this);
+      this.handleClickShowChoices = this.handleClickShowChoices.bind(this);
       this.randomCard = this.randomCard.bind(this);
-      this.handleClick2 = this.handleClick2.bind(this);
+      this.handleClickShowAnswer = this.handleClickShowAnswer.bind(this);
     }
     // initiating fetch on load
     componentWillMount() {
@@ -76,7 +76,7 @@ export default class Test extends React.Component {
         var firstChoice = remainingCards[randomIdx].answer
         // TODO need to change this into a random display
         var answer = firstChoice
-        var secondChoice = remainingCards[(randomIdx + 1) % 8].answer
+        var secondChoice = remainingCards[(randomIdx - 1)].answer
 
         this.state.cards.forEach((card, index) => {
           if (card.question === question) {
@@ -92,32 +92,30 @@ export default class Test extends React.Component {
       }
         this.setState({indexs: indexs, firstChoice: firstChoice, secondChoice: secondChoice, question: question, answer: answer})
     }
+
     // Right/wrong
-    handleClick2() {
+    handleClickShowAnswer() {
       const checkAnswer = this.state.answer;
       const checkFirstChoice = this.state.firstChoice;
-      const checkSecondChoice = this.state.secondChoice;
 
       if (checkAnswer === checkFirstChoice) {
         this.setState({firstColor: this.props.colors.right, secondColor: this.props.colors.wrong})
       } else {
         this.setState({firstColor: this.props.colors.wrong, secondColor: this.props.colors.right})
-
       }
     }
     // Ux/Ui
-    handleClick() {
+    handleClickShowChoices() {
       const clickFX = {...this.state.clickFX}
       clickFX.display = 'block'
       this.setState({clickFX: clickFX})
     }
   render() {
-    console.log('Rendering', this.state)
     return (<MuiThemeProvider>
       <React.Fragment>
       <div style={this.props.combineStyleObjects(grid.container, {paddingBottom: '2%'})}>
         <Rectangle
-          onClick={this.handleClick}
+          onClick={this.handleClickShowChoices}
           // Style & Props
           combineStyleObjects={this.props.combineStyleObjects}
           style={this.props.colors.white}
@@ -132,7 +130,7 @@ export default class Test extends React.Component {
           style={this.state.firstColor}
           grid={grid.answer1}
           text={this.state.firstChoice}
-          onClick={this.handleClick2}
+          onClick={this.handleClickShowAnswer}
         />
         <Rectangle
           // State
@@ -142,7 +140,7 @@ export default class Test extends React.Component {
           style={this.state.secondColor}
           grid={grid.answer2}
           text={this.state.secondChoice}
-          onClick={this.handleClick2}
+          onClick={this.handleClickShowAnswer}
         />
       </div>
       {
