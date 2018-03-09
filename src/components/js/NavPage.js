@@ -43,9 +43,6 @@ const grid = {
 }
 
 export default class NavPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 /* each Circle Component requires
   # onMouseEnter && onMouseLeave event
   # effects obj (UI interactions)
