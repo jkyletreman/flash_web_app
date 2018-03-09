@@ -15,7 +15,7 @@ export default class Rectangle extends React.Component {
         textAlign: 'center',
         margin: '0 auto',
         boxShadow: '7px 5px 5px rgba(73, 74, 73, 0.49)',
-        overflow: 'scroll'
+        overflow: 'scroll',
       },
       hoverFX: {
         opacity: '0.8',
