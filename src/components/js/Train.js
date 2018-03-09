@@ -67,8 +67,9 @@ export default class Train extends React.Component {
     // check to make sure we are not out of cards
     if (this.state.cards.length !== this.state.indexs.length || this.state.indexs.length === 0) {
     // add new card to list of knockouts via original index
-    var question = remainingCards[randomIdx].question
-    var answer = remainingCards[randomIdx].answer
+      question = remainingCards[randomIdx].question
+      answer = remainingCards[randomIdx].answer
+
       this.state.cards.forEach((card, index) => {
         if (card.question === question) {
           indexs.push(index)
