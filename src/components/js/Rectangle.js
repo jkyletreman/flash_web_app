@@ -3,7 +3,7 @@ import React from 'react'
 //this class takes as props:
 // # a color in the form of the props.style
 // # a grid position
-
+// # combineStyleObjects
 export default class Rectangle extends React.Component {
   constructor(props) {
     super(props)
@@ -22,7 +22,6 @@ export default class Rectangle extends React.Component {
         border: this.props.style.border
       }
     }
-    console.log('Rectangle CONSTRUCTION!', this.props.style.border, this.state.hoverFX)
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
@@ -38,6 +37,10 @@ export default class Rectangle extends React.Component {
     mouseLeaveFX.border = this.props.style.border
     this.setState({hoverFX: mouseLeaveFX})
   }
+  // because the choices(test component) don't unmount (no condition rendering)
+  // we need to reset the state when the rectangle recieves the new props from the clickFX
+  // otherwise the state will be hanging behind the Props
+  // better solution is to conditionally render and not use props in state
   componentWillReceiveProps(nextProps) {
     if (this.props.fx && this.props.fx.display === 'block') {
       this.setState({
